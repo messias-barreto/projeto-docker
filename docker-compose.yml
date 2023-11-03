@@ -1,0 +1,61 @@
+version: '3.8'
+services:
+  nginx:
+    container_name: web
+    image: nginx:latest
+    ports:
+      - 8080:80
+      - 443:443
+    volumes:
+      - ./www:/usr/share/nginx/html
+      - ./docker/nginx:/etc/nginx/conf.d
+      - ./docker/nginx/cert:/usr/local/nginx/ssl
+    depends_on:
+      - php70
+      - php82
+    networks:
+      - projeto_docker
+
+  php70:
+    container_name: php7.0
+    build: 
+      context: .
+      dockerfile: ./docker/php/7.0/Dockerfile
+    ports:
+      - 8001:8001
+    volumes:
+      -  ./www:/usr/share/nginx/html   
+    networks:
+      - projeto_docker
+
+  php82:
+    container_name: php8.2
+    build: 
+      context: .
+      dockerfile: ./docker/php/8.2/Dockerfile
+    ports:
+      - 8002:8002
+    volumes:
+      - ./www:/usr/share/nginx/html
+    networks:
+      - projeto_docker
+
+  database-mysql:
+    container_name: mysql
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    volumes: 
+      - ./docker/database/mysql:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: projeto_docker
+      MYSQL_USER: docker
+      MYSQL_ROOT_PASSWORD: 123123
+    ports:
+      - 3306:3306
+    networks:
+      - projeto_docker
+networks: 
+    projeto_docker:
+      driver: bridge
+  
