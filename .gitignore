@@ -1,1 +1,3 @@
-/docker/database
+/docker/database/*
+/docker/data/logs/*
+/www/*

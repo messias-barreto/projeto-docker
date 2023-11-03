@@ -6,8 +6,6 @@
 
 FROM php:7.0-fpm
 
-LABEL maintainer="Mahmoud Zalt <mahmoud@zalt.me>"
-
 # Set Environment Variables
 ENV DEBIAN_FRONTEND noninteractive
 

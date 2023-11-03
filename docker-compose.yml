@@ -4,12 +4,13 @@ services:
     container_name: web
     image: nginx:latest
     ports:
-      - 8080:80
+      - 80:80
       - 443:443
     volumes:
       - ./www:/usr/share/nginx/html
-      - ./docker/nginx:/etc/nginx/conf.d
-      - ./docker/nginx/cert:/usr/local/nginx/ssl
+      - ./docker/nginx/:/etc/nginx/conf.d
+      - ./docker/data/nginx/cert:/usr/local/nginx/ssl
+      - ./docker/data/nginx/logs:/var/log/nginx
     depends_on:
       - php70
       - php82
@@ -17,24 +18,24 @@ services:
       - projeto_docker
 
   php70:
-    container_name: php7.0
+    container_name: php70
     build: 
       context: .
       dockerfile: ./docker/php/7.0/Dockerfile
     ports:
-      - 8001:8001
+      - 9000:9001
     volumes:
       -  ./www:/usr/share/nginx/html   
     networks:
       - projeto_docker
 
   php82:
-    container_name: php8.2
+    container_name: php82
     build: 
       context: .
       dockerfile: ./docker/php/8.2/Dockerfile
-    ports:
-      - 8002:8002
+    expose:
+      - "9000"
     volumes:
       - ./www:/usr/share/nginx/html
     networks:
