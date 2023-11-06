@@ -8,7 +8,7 @@ cd projeto-docker
 docker compose build
 ```
 ## Adicionando um novo Projeto
-- A Pasta www será o local onde será adicionado os projetos
+- A Pasta www é o local onde será adicionado os projetos
 - crie, ou arraste, o projeto para a pasta www
 
 ## Configurando o Arquivo nginx
@@ -54,12 +54,10 @@ server {
   database-mysql:
     container_name: mysql
     image: mysql
-    command: --default-authentication-plugin=mysql_native_password
     restart: always
     volumes: 
       - ./docker/database/mysql:/var/lib/mysql
     environment:
-      MYSQL_DATABASE: nome_do_seu_banco
       MYSQL_USER: docker
       MYSQL_ROOT_PASSWORD: sua_senha
     ports:
@@ -78,4 +76,4 @@ docker compose up -d
 127.0.0.1	projeto-default.co //server_name do arquivo de configuração do nginx
 ```
 - Vá na Página do navegador e digite:
-- http://default.co
+- http://projeto-default.co
