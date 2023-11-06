@@ -44,12 +44,10 @@ services:
   database-mysql:
     container_name: mysql
     image: mysql
-    command: --default-authentication-plugin=mysql_native_password
     restart: always
     volumes: 
       - ./docker/database/mysql:/var/lib/mysql
     environment:
-      MYSQL_DATABASE: projeto_docker
       MYSQL_USER: docker
       MYSQL_ROOT_PASSWORD: 123123
     ports:
