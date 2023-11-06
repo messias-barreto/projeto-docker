@@ -6,8 +6,8 @@
 </head>
 <body>
     <div class="content">
-        <h1>Versão do PHP: <?php echo phpversion(); ?></h1>
-        <p>Bem Vindo ao Projeto Docker!</p>
+        <h1>Bem Vindo ao Projeto Docker!</h1>
+        <p>Versão do PHP: <?php echo phpversion(); ?></p>
     </div>
 </body>
 </html>
