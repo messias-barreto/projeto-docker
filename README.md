@@ -75,7 +75,7 @@ docker compose up -d
 ## Para finalizar... 
 - Vá até o arquivo de confuguração de hosts na sua máquina e adicione o novo host
 ```
-127.0.0.1 default.co //server_name do arquivo de configuração do nginx
+127.0.0.1	projeto-default.co //server_name do arquivo de configuração do nginx
 ```
 - Vá na Página do navegador e digite:
 - http://default.co
